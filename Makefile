@@ -37,7 +37,13 @@ migrate:
 test:
 	docker compose run --rm app php artisan test -q
 
+populate:
+	docker compose run --rm app php artisan db:seed
+
 artisan:
 	@docker compose run --rm app php artisan $(CMD)
 	@true
 
+composer:
+	@docker compose run --rm app composer $(CMD)
+	@true
