@@ -28,22 +28,20 @@ install:
 		  cp -an /tmp/laravel/* /var/www/html/'; \
 	fi
 	cp -n .env.example .env || true
-	docker compose run --rm app php artisan key:generate
-	docker compose run --rm app php artisan storage:link
+	docker compose exec -u www-data app php artisan key:generate
+	docker compose exec -u www-data app php artisan storage:link
 
 migrate:
-	docker compose run --rm app php artisan migrate
+	docker compose exec -u www-data app php artisan migrate
 
 test:
-	docker compose run --rm app php artisan test -q
+	docker compose exec -u www-data app php artisan test -q
 
 populate:
-	docker compose run --rm app php artisan db:seed
+	docker compose exec -u www-data app php artisan db:seed
 
 artisan:
-	@docker compose run --rm app php artisan $(CMD)
-	@true
+	docker compose exec -u www-data app php artisan $(CMD)
 
 composer:
-	@docker compose run --rm app composer $(CMD)
-	@true
+	docker compose exec -u www-data app composer $(CMD)

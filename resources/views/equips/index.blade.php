@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.equip')
+
+@section('title', 'Títol de la pàgina')
 
 @section('content')
 <div class="container">

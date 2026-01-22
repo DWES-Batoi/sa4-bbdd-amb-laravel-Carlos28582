@@ -1,0 +1,21 @@
+
+  GET|HEAD        / .......................................................... 
+  GET|HEAD        equips ................ equips.index › EquipController@index
+  POST            equips ................ equips.store › EquipController@store
+  GET|HEAD        equips/create ....... equips.create › EquipController@create
+  GET|HEAD        equips/{equip} .......... equips.show › EquipController@show
+  PUT|PATCH       equips/{equip} ...... equips.update › EquipController@update
+  DELETE          equips/{equip} .... equips.destroy › EquipController@destroy
+  GET|HEAD        equips/{equip}/edit ..... equips.edit › EquipController@edit
+  GET|HEAD        estadis ............. estadis.index › EstadiController@index
+  POST            estadis ............. estadis.store › EstadiController@store
+  GET|HEAD        estadis/create .... estadis.create › EstadiController@create
+  GET|HEAD        estadis/{estadi} ...... estadis.show › EstadiController@show
+  PUT|PATCH       estadis/{estadi} .. estadis.update › EstadiController@update
+  DELETE          estadis/{estadi} estadis.destroy › EstadiController@destroy
+  GET|HEAD        estadis/{estadi}/edit . estadis.edit › EstadiController@edit
+  GET|HEAD        storage/{path} ............................... storage.local
+  GET|HEAD        up ......................................................... 
+
+                                                           Showing [17] routes
+
