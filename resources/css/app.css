@@ -1,3 +1,81 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.title {
+  margin-bottom: 16px;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px;
+  background: rgb(182, 39, 39);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card__header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card__badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+}
+
+.card__body p {
+  margin: 6px 0;
+}
+
+.card__footer {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 1px solid #133780;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #0f0d0d;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+}
+
+.btn--primary {
+  background: #111827;
+  color: rgb(255, 255, 255);
+  border-color: #111827;
+}
+
+.btn--ghost {
+  background: #3e4f5f;
+}
+
+.btn--danger {
+  background: #fd0000;
+  border-color: #160101;
+}
+
+.inline { display: inline; }

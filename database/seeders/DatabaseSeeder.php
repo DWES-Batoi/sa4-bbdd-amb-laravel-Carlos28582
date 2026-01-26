@@ -13,9 +13,13 @@ class DatabaseSeeder extends Seeder
     {
         // Des d'ací cridem la resta de seeders
         $this->call([
+            UserSeeder::class,
+
             EstadisSeeder::class,
             EquipsSeeder::class,
-            UserSeeder::class,
+
+            JugadoresSeeder::class,
+            PartitsSeeder::class,
         ]);
 
         // Opcional: per veure que acaba
