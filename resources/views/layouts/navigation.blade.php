@@ -19,7 +19,6 @@
                     <x-nav-link :href="route('estadis.index')" :active="request()->routeIs('estadis.*')">
                         {{ __('Estadis') }}
                     </x-nav-link>
-
                     <x-nav-link :href="route('jugadores.index')" :active="request()->routeIs('jugadores.*')">
                         {{ __('Jugadores') }}
                     </x-nav-link>
@@ -36,9 +35,26 @@
                 </div>
             </div>
 
-            <!-- Settings Dropdown -->
-            @auth
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <!-- Right side (always visible on desktop) -->
+            <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
+                {{-- 🌍 Idioma (sempre visible en desktop) --}}
+                <div class="flex items-center gap-2">
+                    <a href="{{ route('setLocale','ca') }}"
+                        class="text-sm text-gray-700 dark:text-gray-300 {{ app()->getLocale()==='ca' ? 'font-bold underline' : '' }}">
+                        CA
+                    </a>
+                    <a href="{{ route('setLocale','es') }}"
+                        class="text-sm text-gray-700 dark:text-gray-300 {{ app()->getLocale()==='es' ? 'font-bold underline' : '' }}">
+                        ES
+                    </a>
+                    <a href="{{ route('setLocale','en') }}"
+                        class="text-sm text-gray-700 dark:text-gray-300 {{ app()->getLocale()==='en' ? 'font-bold underline' : '' }}">
+                        EN
+                    </a>
+                </div>
+
+                @auth
+                <!-- Settings Dropdown -->
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -57,6 +73,21 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        {{-- 🌍 Idioma (opcional dins del dropdown també) --}}
+                        <div class="border-t border-gray-100 dark:border-gray-600 my-1"></div>
+
+                        <x-dropdown-link :href="route('setLocale','ca')">
+                            {{ __('Català') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('setLocale','es')">
+                            {{ __('Castellano') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('setLocale','en')">
+                            {{ __('English') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -69,9 +100,7 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-            </div>
-            @else
-            <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
+                @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-300">
                     {{ __('Log in') }}
                 </a>
@@ -79,8 +108,8 @@
                 <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-300">
                     {{ __('Register') }}
                 </a>
+                @endauth
             </div>
-            @endauth
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
@@ -112,12 +141,29 @@
                 {{ __('Partits') }}
             </x-nav-link>
 
-
             @auth
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             @endauth
+        </div>
+
+        {{-- 🌍 Idioma (sempre visible en mòbil) --}}
+        <div class="pt-2 pb-2 border-t border-gray-200 dark:border-gray-600">
+            <div class="px-4 flex items-center gap-4">
+                <a href="{{ route('setLocale','ca') }}"
+                    class="text-sm text-gray-700 dark:text-gray-300 {{ app()->getLocale()==='ca' ? 'font-bold underline' : '' }}">
+                    CA
+                </a>
+                <a href="{{ route('setLocale','es') }}"
+                    class="text-sm text-gray-700 dark:text-gray-300 {{ app()->getLocale()==='es' ? 'font-bold underline' : '' }}">
+                    ES
+                </a>
+                <a href="{{ route('setLocale','en') }}"
+                    class="text-sm text-gray-700 dark:text-gray-300 {{ app()->getLocale()==='en' ? 'font-bold underline' : '' }}">
+                    EN
+                </a>
+            </div>
         </div>
 
         <!-- Responsive Settings Options -->

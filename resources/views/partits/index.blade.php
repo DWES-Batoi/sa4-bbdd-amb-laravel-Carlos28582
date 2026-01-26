@@ -8,7 +8,7 @@
   <thead class="bg-gray-200">
     <tr>
       <th class="border p-2">Local</th>
-      <th class="border p-2">Visitant</th>
+      <th class="border p-2">{{__("Visitant")}}</th>
       <th class="border p-2">Resultat</th>
       <th class="border p-2">Estadi</th>
     </tr>

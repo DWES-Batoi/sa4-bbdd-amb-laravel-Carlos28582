@@ -6,7 +6,7 @@ use App\Http\Controllers\EstadiController;
 use App\Http\Controllers\JugadoraController;
 use App\Http\Controllers\PartitController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Session;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -55,4 +55,15 @@ Route::resource('estadis', EstadiController::class)->only(['show']);
 Route::resource('jugadores', JugadoraController::class)->only(['show']);
 Route::resource('partits', PartitController::class)->only(['show']);
 
+Route::get('/locale/{locale}', function (string $locale) {
+    $available = ['ca', 'es', 'en'];
+
+    if (!in_array($locale, $available, true)) {
+        $locale = config('app.fallback_locale', 'en');
+    }
+
+    Session::put('locale', $locale);
+
+    return redirect()->back();
+})->name('setLocale');
 require __DIR__.'/auth.php';

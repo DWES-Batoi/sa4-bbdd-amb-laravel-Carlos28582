@@ -8,7 +8,7 @@
   @csrf
 
   <div>
-    <label class="block font-bold">Estadi:</label>
+    <label class="block font-bold">{{__(Estadi)}}:</label>
     <select name="estadi_id" class="border p-2 w-full">
       @foreach ($estadis as $estadi)
         <option value="{{ $estadi->id }}">{{ $estadi->nom }}</option>
