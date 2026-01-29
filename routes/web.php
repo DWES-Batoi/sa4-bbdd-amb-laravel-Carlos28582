@@ -66,4 +66,5 @@ Route::get('/locale/{locale}', function (string $locale) {
 
     return redirect()->back();
 })->name('setLocale');
+
 require __DIR__.'/auth.php';

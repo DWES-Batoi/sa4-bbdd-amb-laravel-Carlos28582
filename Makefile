@@ -45,3 +45,4 @@ artisan:
 
 composer:
 	docker compose exec -u www-data app composer $(CMD)
+

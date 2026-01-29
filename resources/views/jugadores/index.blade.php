@@ -1,8 +1,8 @@
 @extends('layouts.equip')
-@section('title', 'Llista de jugadores')
+@section('title', __('Llista de jugadores'))
 
 @section('content')
-<h1 class="text-3xl font-bold text-blue-800 mb-6">Jugadores</h1>
+<h1 class="text-3xl font-bold text-blue-800 mb-6">{{__("Jugadores")}}</h1>
 
 @if (session('success'))
   <div class="bg-green-100 text-green-700 p-2 mb-4">{{ session('success') }}</div>
@@ -10,17 +10,17 @@
 
 <p class="mb-4">
   <a href="{{ route('jugadores.create') }}" class="bg-blue-600 text-white px-3 py-2 rounded">
-    Nova jugadora
+   {{__("Nova jugadora")}}
   </a>
 </p>
 
 <table class="w-full border-collapse border border-gray-300">
   <thead class="bg-gray-200">
     <tr>
-      <th class="border p-2">Nom</th>
-      <th class="border p-2">Edat</th>
-      <th class="border p-2">Posició</th>
-      <th class="border p-2">Equip</th>
+      <th class="border p-2">{{__("Nom")}}</th>
+      <th class="border p-2">{{__("Edat")}}</th>
+      <th class="border p-2">{{__("Posició")}}</th>
+      <th class="border p-2">{{__("Equip")}}</th>
     </tr>
   </thead>
   <tbody>

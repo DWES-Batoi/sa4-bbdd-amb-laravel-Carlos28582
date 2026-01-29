@@ -1,16 +1,21 @@
 @extends('layouts.equip')
-@section('title', 'Partits')
+@section('title', __('Partits'))
 
 @section('content')
-<h1 class="text-3xl font-bold text-blue-800 mb-6">Partits</h1>
-
+<h1 class="text-3xl font-bold text-blue-800 mb-6">{{__("Partits")}}
+</h1>
+<p class="mb-4">
+  <a href="{{ route('partits.create') }}" class="bg-blue-600 text-white px-3 py-2 rounded">
+   {{__("Nou partit")}}
+  </a>
+</p>
 <table class="w-full border-collapse border border-gray-300">
   <thead class="bg-gray-200">
     <tr>
-      <th class="border p-2">Local</th>
+      <th class="border p-2">{{__("Local")}}</th>
       <th class="border p-2">{{__("Visitant")}}</th>
-      <th class="border p-2">Resultat</th>
-      <th class="border p-2">Estadi</th>
+      <th class="border p-2">{{__("Resultat")}}</th>
+      <th class="border p-2">{{__("Estadi")}}</th>
     </tr>
   </thead>
   <tbody>

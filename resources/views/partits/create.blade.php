@@ -7,11 +7,13 @@
 <form action="{{ route('partits.store') }}" method="POST" class="space-y-4">
   @csrf
 
-  <div>
-    <label class="block font-bold">{{__(Estadi)}}:</label>
-    <select name="estadi_id" class="border p-2 w-full">
+    <div>
+    <label for="estadi_id" class="block font-bold">Estadi:</label>
+    <select name="estadi_id" id="estadi_id" class="border p-2 w-full">
       @foreach ($estadis as $estadi)
-        <option value="{{ $estadi->id }}">{{ $estadi->nom }}</option>
+        <option value="{{ $estadi->id }}" {{ old('estadi_id') == $estadi->id ? 'selected' : '' }}>
+          {{ $estadi->nom }}
+        </option>
       @endforeach
     </select>
   </div>

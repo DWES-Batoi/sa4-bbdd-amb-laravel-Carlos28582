@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partit;
+use App\Models\Estadi;
+use App\Models\Equip;
 use Illuminate\Http\Request;
 
 class PartitController extends Controller
@@ -23,7 +25,9 @@ class PartitController extends Controller
     // GET /partits/create
     public function create()
     {
-        return view('partits.create');
+        $estadis = Estadi::all();
+        $equips = Equip::all();
+        return view('partits.create', compact('estadis', 'equips'));
     }
 
     // POST /partits

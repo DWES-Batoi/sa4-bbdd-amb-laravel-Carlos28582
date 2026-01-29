@@ -7,8 +7,8 @@
 </h1>
 
 <ul class="space-y-2">
-  <li><strong>Resultat:</strong> {{ $partit->resultat }}</li>
-  <li><strong>Estadi:</strong> {{ $partit->estadi->nom }}</li>
+  <li><strong>{{__("Resultat")}}:</strong> {{ $partit->resultat }}</li>
+  <li><strong>{{__("Estadi")}}:</strong> {{ $partit->estadi->nom }}</li>
 </ul>
 
 <p class="mt-4">
