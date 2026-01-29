@@ -18,12 +18,12 @@
 
   <div>
     <label for="nom" class="block font-bold">Nom:</label>
-    <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="border p-2 w-full">
+    <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="border p-2 w-full text-black">
   </div>
 
   <div>
     <label for="estadi_id" class="block font-bold">Estadi:</label>
-    <select name="estadi_id" id="estadi_id" class="border p-2 w-full">
+    <select name="estadi_id" id="estadi_id" class="border p-2 w-full text-black">
       @foreach ($estadis as $estadi)
         <option value="{{ $estadi->id }}" {{ old('estadi_id') == $estadi->id ? 'selected' : '' }}>
           {{ $estadi->nom }}
@@ -34,7 +34,7 @@
 
   <div>
     <label for="titols" class="block font-bold">Títols:</label>
-    <input type="number" name="titols" id="titols" value="{{ old('titols') }}" class="border p-2 w-full">
+    <input type="number" name="titols" id="titols" value="{{ old('titols') }}" class="border p-2 w-full text-black">
   </div>
 
   <div class="mb-4">

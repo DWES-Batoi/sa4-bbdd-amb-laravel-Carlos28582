@@ -14,8 +14,8 @@
   </a>
 </p>
 
-<table class="w-full border-collapse border border-gray-300">
-  <thead class="bg-gray-200">
+<table class="w-full border-collapse border">
+  <thead class="bg-blue-800">
     <tr>
       <th class="border p-2">{{__("Nom")}}</th>
       <th class="border p-2">{{__("Edat")}}</th>

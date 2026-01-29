@@ -14,22 +14,22 @@
   </a>
 </p>
 
-<table class="w-full border-collapse border border-gray-300">
-  <thead class="bg-gray-200">
+<table class="w-full border-collapse border border-green-900">
+  <thead class="bg-green-900">
     <tr>
-      <th class="border border-gray-300 p-2">{{__("Nom")}}</th>
-      <th class="border border-gray-300 p-2">{{__("Capacitat")}}</th>
+      <th class="border border-green-900 p-2">{{__("Nom")}}</th>
+      <th class="border border-green-900 p-2">{{__("Capacitat")}}</th>
     </tr>
   </thead>
   <tbody>
   @foreach($estadis as $estadi)
-    <tr class="hover:bg-gray-100">
-      <td class="border border-gray-300 p-2">
+    <tr class="hover:bg-green-400">
+      <td class="border border-green-900 p-2">
         <a href="{{ route('estadis.show', $estadi->id) }}" class="text-blue-700 hover:underline">
           {{ $estadi->nom }}
         </a>
       </td>
-      <td class="border border-gray-300 p-2">{{ $estadi->capacitat }}</td>
+      <td class="border border-green-900 p-2">{{ $estadi->capacitat }}</td>
     </tr>
   @endforeach
   </tbody>

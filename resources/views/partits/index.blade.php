@@ -9,8 +9,8 @@
    {{__("Nou partit")}}
   </a>
 </p>
-<table class="w-full border-collapse border border-gray-300">
-  <thead class="bg-gray-200">
+<table class="w-full border-collapse border bg-yellow-800">
+  <thead class="bg-red-800">
     <tr>
       <th class="border p-2">{{__("Local")}}</th>
       <th class="border p-2">{{__("Visitant")}}</th>

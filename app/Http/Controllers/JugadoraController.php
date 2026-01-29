@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jugadora;
+use App\Models\Equip;
 use Illuminate\Http\Request;
 
 class JugadoraController extends Controller
@@ -23,6 +24,8 @@ class JugadoraController extends Controller
     // GET /jugadoras/create
     public function create()
     {
+        $equips = Equip::all();
+        return view('jugadores.create', compact('equips'));
         return view('jugadores.create');
     }
 

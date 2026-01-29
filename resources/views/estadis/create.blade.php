@@ -24,7 +24,7 @@
       name="nom"
       id="nom"
       value="{{ old('nom') }}"
-      class="border p-2 w-full"
+      class="border p-2 w-full bg-green-900"
     >
   </div>
 
@@ -35,7 +35,7 @@
       name="capacitat"
       id="capacitat"
       value="{{ old('capacitat') }}"
-      class="border p-2 w-full"
+      class="border p-2 w-full bg-green-900"
     >
   </div>
 

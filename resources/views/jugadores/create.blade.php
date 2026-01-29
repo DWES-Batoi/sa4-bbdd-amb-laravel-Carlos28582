@@ -19,22 +19,22 @@
 
   <div>
     <label for="nom" class="block font-bold">{{__("Nom")}}:</label>
-    <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="border p-2 w-full">
+    <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="border p-2 w-full text-black">
   </div>
 
   <div>
-    <label for="edat" class="block font-bold">{{__("Edat)}}:</label>
-    <input type="number" name="edat" id="edat" value="{{ old('edat') }}" class="border p-2 w-full">
+    <label for="edat" class="block font-bold">{{__("Edat")}}:</label>
+    <input type="number" name="edat" id="edat" value="{{ old('edat') }}" class="border p-2 w-full text-black">
   </div>
 
   <div>
-    <label for="posicio" class="block font-bold">{{__("Posició)}}:</label>
-    <input type="text" name="posicio" id="posicio" value="{{ old('posicio') }}" class="border p-2 w-full">
+    <label for="posicio" class="block font-bold">{{__("Posició")}}:</label>
+    <input type="text" name="posicio" id="posicio" value="{{ old('posicio') }}" class="border p-2 w-full text-black">
   </div>
 
   <div>
-    <label for="equip_id" class="block font-bold">{{__("Equip)}}:</label>
-    <select name="equip_id" id="equip_id" class="border p-2 w-full">
+    <label for="equip_id" class="block font-bold">{{__("Equip")}}:</label>
+    <select name="equip_id" id="equip_id" class="border p-2 w-full text-black">
       @foreach ($equips as $equip)
         <option value="{{ $equip->id }}">{{ $equip->nom }}</option>
       @endforeach
