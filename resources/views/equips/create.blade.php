@@ -1,9 +1,9 @@
 @extends('layouts.equip')
 
-@section('title', 'Afegir nou equip')
+@section('title', __('Afegir nou equip'))
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Afegir nou equip</h1>
+<h1 class="text-2xl font-bold mb-4">{{__('Afegir nou equip')}}</h1>
 
 @if ($errors->any())
   <div class="bg-red-100 text-red-700 p-2 mb-4">
@@ -17,12 +17,12 @@
   @csrf
 
   <div>
-    <label for="nom" class="block font-bold">Nom:</label>
+    <label for="nom" class="block font-bold">{{__('Nom')}}:</label>
     <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="border p-2 w-full text-black">
   </div>
 
   <div>
-    <label for="estadi_id" class="block font-bold">Estadi:</label>
+    <label for="estadi_id" class="block font-bold">{{__('Estadi')}}:</label>
     <select name="estadi_id" id="estadi_id" class="border p-2 w-full text-black">
       @foreach ($estadis as $estadi)
         <option value="{{ $estadi->id }}" {{ old('estadi_id') == $estadi->id ? 'selected' : '' }}>
@@ -33,7 +33,7 @@
   </div>
 
   <div>
-    <label for="titols" class="block font-bold">Títols:</label>
+    <label for="titols" class="block font-bold">{{__('Títols')}}:</label>
     <input type="number" name="titols" id="titols" value="{{ old('titols') }}" class="border p-2 w-full text-black">
   </div>
 
@@ -45,6 +45,6 @@
             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
         @enderror
     </div>
-  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Afegir</button>
+  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">{{__('Afegir')}}</button>
 </form>
 @endsection

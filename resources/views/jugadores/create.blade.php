@@ -1,8 +1,8 @@
 @extends('layouts.equip')
-@section('title', 'Afegir nova jugadora')
+@section('title', __('Afegir nova jugadora'))
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Afegir nova jugadora</h1>
+<h1 class="text-2xl font-bold mb-4">{{__('Afegir nova jugadora')}}</h1>
 
 @if ($errors->any())
   <div class="bg-red-100 text-red-700 p-2 mb-4">
