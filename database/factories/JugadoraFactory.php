@@ -24,7 +24,7 @@ class JugadoraFactory extends Factory
                 'Migcampista',
                 'Davantera',
             ]),
-            'equip_id' => Equip::inRandomOrder()->first()->id,
+          'equip_id' => Equip::factory(),
         ];
     }
 }
