@@ -1,37 +1,42 @@
 @extends('layouts.equip')
-@section('title', __("Guia d'Estadis"))
+
+@section('title', __("Estadis"))
 
 @section('content')
-<h1 class="text-3xl font-bold text-blue-800 mb-6">{{__("Guia d'Estadis")}}</h1>
+<div class="container">
+  <h1 class="title">{{ __("Llistat d'estadis") }}</h1>
 
-@if (session('success'))
-  <div class="bg-green-100 text-green-700 p-2 mb-4">{{ session('success') }}</div>
-@endif
+  <p class="mb-4">
+    <a href="{{ route('estadis.create') }}" class="bg-blue-600 text-white px-3 py-2 rounded">
+      {{ __("Nou estadi") }}
+    </a>
+  </p>
 
-<p class="mb-4">
-  <a href="{{ route('estadis.create') }}" class="bg-blue-600 text-white px-3 py-2 rounded">
-    {{__("Nou Estadi")}}
-  </a>
-</p>
+  <div class="grid-cards">
+    @foreach ($estadis as $estadi)
+      <article class="card">
+        <header class="card__header">
+          <h2 class="card__title">{{ $estadi->nom }}</h2>
+          <span class="card__badge">ID: {{ $estadi->id }}</span>
+        </header>
 
-<table class="w-full border-collapse border border-green-900">
-  <thead class="bg-green-900">
-    <tr>
-      <th class="border border-green-900 p-2">{{__("Nom")}}</th>
-      <th class="border border-green-900 p-2">{{__("Capacitat")}}</th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($estadis as $estadi)
-    <tr class="hover:bg-green-400">
-      <td class="border border-green-900 p-2">
-        <a href="{{ route('estadis.show', $estadi->id) }}" class="text-blue-700 hover:underline">
-          {{ $estadi->nom }}
-        </a>
-      </td>
-      <td class="border border-green-900 p-2">{{ $estadi->capacitat }}</td>
-    </tr>
-  @endforeach
-  </tbody>
-</table>
+        <div class="card__body">
+          <p><strong>{{ __("Ciutat") }}:</strong> {{ $estadi->ciutat ?? '—' }}</p>
+          <p><strong>{{ __("Capacitat") }}:</strong> {{ $estadi->capacitat ?? '—' }}</p>
+        </div>
+
+        <footer class="card__footer">
+          <a class="btn btn--ghost" href="{{ route('estadis.show', $estadi) }}">{{ __("Vore") }}</a>
+          <a class="btn btn--primary" href="{{ route('estadis.edit', $estadi) }}">{{ __("Editar") }}</a>
+
+          <form method="POST" action="{{ route('estadis.destroy', $estadi) }}" class="inline">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn--danger" type="submit">{{ __("Esborrar") }}</button>
+          </form>
+        </footer>
+      </article>
+    @endforeach
+  </div>
+</div>
 @endsection

@@ -1,41 +1,56 @@
 @extends('layouts.equip')
-@section('title', __('Llista de jugadores'))
+
+@section('title', __("Jugadores"))
 
 @section('content')
-<h1 class="text-3xl font-bold text-blue-800 mb-6">{{__("Jugadores")}}</h1>
+<div class="container">
+  <h1 class="title">{{ __("Llistat de jugadores") }}</h1>
 
-@if (session('success'))
-  <div class="bg-green-100 text-green-700 p-2 mb-4">{{ session('success') }}</div>
-@endif
+  <p class="mb-4">
+    <a href="{{ route('jugadores.create') }}" class="bg-blue-600 text-white px-3 py-2 rounded">
+      {{ __("Nova jugadora") }}
+    </a>
+  </p>
 
-<p class="mb-4">
-  <a href="{{ route('jugadores.create') }}" class="bg-blue-600 text-white px-3 py-2 rounded">
-   {{__("Nova jugadora")}}
-  </a>
-</p>
+  <div class="grid-cards">
+    @foreach ($jugadores as $jugadora)
+      <article class="card">
+        <header class="card__header">
+          <h2 class="card__title">{{ $jugadora->nom }}</h2>
+          <span class="card__badge">ID: {{ $jugadora->id }}</span>
+        </header>
 
-<table class="w-full border-collapse border">
-  <thead class="bg-blue-800">
-    <tr>
-      <th class="border p-2">{{__("Nom")}}</th>
-      <th class="border p-2">{{__("Edat")}}</th>
-      <th class="border p-2">{{__("Posició")}}</th>
-      <th class="border p-2">{{__("Equip")}}</th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach ($jugadores as $jugadora)
-    <tr class="hover:bg-gray-100">
-      <td class="border p-2">
-        <a href="{{ route('jugadores.show', $jugadora->id) }}" class="text-blue-700 hover:underline">
-          {{ $jugadora->nom }}
-        </a>
-      </td>
-      <td class="border p-2">{{ $jugadora->edat }}</td>
-      <td class="border p-2">{{ $jugadora->posicio }}</td>
-      <td class="border p-2">{{ $jugadora->equip->nom ?? '—' }}</td>
-    </tr>
-  @endforeach
-  </tbody>
-</table>
+        <div class="card__body">
+          <p>
+            <strong>{{ __("Equip") }}:</strong>
+            {{ $jugadora->equip->nom ?? '—' }}
+          </p>
+
+          <p>
+            <strong>{{ __("Posició") }}:</strong>
+            {{ $jugadora->posicio ?? '—' }}
+          </p>
+        </div>
+
+        <footer class="card__footer">
+          <a class="btn btn--ghost" href="{{ route('jugadores.show', $jugadora) }}">
+            {{ __("Vore") }}
+          </a>
+
+          <a class="btn btn--primary" href="{{ route('jugadores.edit', $jugadora) }}">
+            {{ __("Editar") }}
+          </a>
+
+          <form method="POST" action="{{ route('jugadores.destroy', $jugadora) }}" class="inline">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn--danger" type="submit">
+              {{ __("Esborrar") }}
+            </button>
+          </form>
+        </footer>
+      </article>
+    @endforeach
+  </div>
+</div>
 @endsection

@@ -43,7 +43,8 @@ class JugadoraController extends Controller
     // GET /jugadoras/{jugadora}/edit
     public function edit(Jugadora $jugadora)
     {
-        return view('jugadores.edit', compact('jugadora'));
+        $equips = Equip::all();
+        return view('jugadores.edit', compact('jugadora', 'equips'));
     }
 
     // PUT/PATCH /jugadoras/{jugadora}
@@ -52,7 +53,7 @@ class JugadoraController extends Controller
         $jugadora->update($request->all());
 
         return redirect()
-            ->route('jugadoras.index')
+            ->route('jugadores.index')
             ->with('success', 'Jugadora actualitzada correctament!');
     }
 

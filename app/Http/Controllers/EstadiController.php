@@ -40,6 +40,7 @@ class EstadiController extends Controller
     // GET /estadis/{estadi}/edit
     public function edit(Estadi $estadi)
     {
+        
         return view('estadis.edit', compact('estadi'));
     }
 

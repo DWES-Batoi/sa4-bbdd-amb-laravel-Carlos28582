@@ -38,7 +38,7 @@
   </div>
 
   <div class="mb-4">
-        <label for="escut" class="block text-sm font-medium text-gray-700 mb-1">Escut:</label>
+        <label for="escut" class="block text-sm font-medium text-gray-700 mb-1">{{__('Escut')}}:</label>
         <input type="file" name="escut" id="escut"
             class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
         @error('escut')

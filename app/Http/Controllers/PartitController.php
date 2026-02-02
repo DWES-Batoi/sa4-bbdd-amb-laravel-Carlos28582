@@ -43,8 +43,10 @@ class PartitController extends Controller
 
     // GET /partits/{partit}/edit
     public function edit(Partit $partit)
-    {
-        return view('partits.edit', compact('partit'));
+    {   
+        $equips = Equip::all();
+        $estadis = Estadi::all();
+        return view('partits.edit', compact('equips', 'partit', 'estadis'));
     }
 
     // PUT/PATCH /partits/{partit}
