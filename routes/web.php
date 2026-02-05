@@ -7,6 +7,7 @@ use App\Http\Controllers\JugadoraController;
 use App\Http\Controllers\PartitController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -42,11 +43,11 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('equips', EquipController::class)->except(['index', 'show']);
     Route::resource('estadis', EstadiController::class)->except(['index', 'show']);
-    Route::middleware('auth')->group(function () {
+
     Route::resource('jugadores', JugadoraController::class)
         ->except(['index', 'show'])
         ->parameters(['jugadores' => 'jugadora']);
-});
+
     Route::resource('partits', PartitController::class)->except(['index', 'show']);
 });
 

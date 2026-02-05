@@ -41,7 +41,7 @@ populate:
 	docker compose exec -u www-data app php artisan db:seed
 
 artisan:
-	docker compose exec -u www-data app php artisan $(CMD)
+	docker compose exec -u root app php artisan $(CMD)
 
 composer:
 	docker compose exec -u www-data app composer $(CMD)
