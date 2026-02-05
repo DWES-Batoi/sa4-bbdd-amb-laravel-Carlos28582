@@ -11,7 +11,7 @@ class JugadoraRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,6 @@ class JugadoraRequest extends FormRequest
         'nom' => ['required', 'string', 'max:255'],
         'equip_id' => ['required', 'exists:equips,id'],
         'posicio' => ['nullable', 'string', 'max:100'],
-        'dorsal' => ['nullable', 'integer', 'min:0', 'max:99'],
         'edat' => ['nullable', 'integer', 'min:0', 'max:120'],
     ];
 }

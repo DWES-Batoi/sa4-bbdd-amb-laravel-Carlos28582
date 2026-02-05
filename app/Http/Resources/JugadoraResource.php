@@ -19,7 +19,6 @@ class JugadoraResource extends JsonResource
         'nom' => $this->nom,
         'equip_id' => $this->equip_id,
         'posicio' => $this->posicio,
-        'dorsal' => $this->dorsal,
         'edat' => $this->edat,
 
         // Exemple si tens relació:

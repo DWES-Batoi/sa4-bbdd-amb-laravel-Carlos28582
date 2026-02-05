@@ -45,8 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('estadis', EstadiController::class)->except(['index', 'show']);
 
     Route::resource('jugadores', JugadoraController::class)
-        ->except(['index', 'show'])
-        ->parameters(['jugadores' => 'jugadora']);
+        ->parameters(['jugadores' => 'jugadora'])
+        ->except(['index', 'show']);
 
     Route::resource('partits', PartitController::class)->except(['index', 'show']);
 });
@@ -60,8 +60,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('equips', EquipController::class)->only(['show']);
 Route::resource('estadis', EstadiController::class)->only(['show']);
 Route::resource('jugadores', JugadoraController::class)
-    ->only(['show'])
-    ->parameters(['jugadores' => 'jugadora']);
+    ->parameters(['jugadores' => 'jugadora'])
+    ->only(['index', 'show']);
 Route::resource('partits', PartitController::class)->only(['show']);
 
 Route::get('/locale/{locale}', function (string $locale) {

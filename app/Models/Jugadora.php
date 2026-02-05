@@ -19,7 +19,6 @@ class Jugadora extends Model
         'nom',
         'edat',
         'posicio',
-        'dorsal',
         'equip_id',
     ];
 

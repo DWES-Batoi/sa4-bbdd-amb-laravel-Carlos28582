@@ -46,4 +46,4 @@ artisan:
 composer:
 	docker compose exec -u www-data app composer $(CMD)
 migrate_fresh:
-	docker compose exec --rm app php artisan migrate:fresh 
+	docker compose run --rm app php artisan migrate:fresh 
