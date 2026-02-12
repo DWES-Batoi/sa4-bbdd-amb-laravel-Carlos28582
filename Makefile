@@ -41,9 +41,15 @@ populate:
 	docker compose exec -u www-data app php artisan db:seed
 
 artisan:
-	docker compose exec -u root app php artisan $(CMD)
+	docker compose exec -u www-data app php artisan $(CMD)
 
 composer:
 	docker compose exec -u www-data app composer $(CMD)
 migrate_fresh:
 	docker compose run --rm app php artisan migrate:fresh 
+
+reverb:
+	docker compose exec app php artisan reverb:start --port=8081
+
+queue:
+	docker compose exec app php artisan queue:work

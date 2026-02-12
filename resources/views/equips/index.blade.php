@@ -21,6 +21,7 @@
         <div class="card__body">
           <p><strong>{{__("Ciutat")}}:</strong> {{ $equip->ciutat ?? '—' }}</p>
           <p><strong>{{__("Estadi")}}:</strong> {{ $equip->estadi->nom ?? '—' }}</p>
+          
         </div>
 
         <footer class="card__footer">

@@ -140,6 +140,9 @@
             <x-nav-link :href="route('partits.index')" :active="request()->routeIs('partits.*')">
                 {{ __('Partits') }}
             </x-nav-link>
+            <x-nav-link :href="route('classificacio.index')" :active="request()->routeIs('classificacio.*')">
+                {{ __('Classificació') }}
+            </x-nav-link>
 
             @auth
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">

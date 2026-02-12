@@ -7,6 +7,8 @@ use App\Http\Controllers\JugadoraController;
 use App\Http\Controllers\PartitController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClassificacioController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,7 +31,8 @@ Route::resource('jugadores', JugadoraController::class)
     ->parameters(['jugadores' => 'jugadora']);
 Route::resource('partits', PartitController::class)->only(['index']);
 
-
+Route::get('/auth/google/redirect', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
 /*
 |--------------------------------------------------------------------------
 | RUTES PROTEGIDES (CRUD)
@@ -75,5 +78,13 @@ Route::get('/locale/{locale}', function (string $locale) {
 
     return redirect()->back();
 })->name('setLocale');
+Route::middleware(['auth', 'not.convidat'])->group(function () {
+    Route::resource('equips', EquipController::class)->except(['index', 'show']);
+    Route::resource('jugadores', JugadoraController::class)->except(['index', 'show']);
+    // ...altres recursos d’escriptura
+});
 
+Route::get('/classificacio', [ClassificacioController::class, 'index'])
+    ->name('classificacio.index');
+    
 require __DIR__.'/auth.php';
