@@ -11,6 +11,8 @@ services:
     depends_on:
       - db
       - redis
+    ports:
+      - "8081:8081"
 
   web:
     image: nginx:alpine
@@ -42,6 +44,21 @@ services:
     container_name: futbol-redis
     ports:
       - "6379:6379"
+        
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: futbol-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      # Si quieres permitir definir otros servidores manualmente en la UI:
+      # PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
 
 volumes:
   db-data:

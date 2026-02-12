@@ -30,7 +30,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Usuario no root (evitar problemas de permisos con el host)
 RUN usermod -u ${WWWUSER} www-data && groupmod -g ${WWWGROUP} www-data
 
-USER www-data
+# USER www-data
 WORKDIR /var/www/html
 
 # Instalar dependencias del proyecto si ya hay composer.json (no falla si no existe)
