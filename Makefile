@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+.PHONY: up down reset sh logs install migrate test artisan ollama-pull ollama-tags ollama-generate
+
 up:
 	docker compose up -d --build
 
@@ -26,16 +28,39 @@ install:
 		  cp -an /tmp/laravel/* /var/www/html/'; \
 	fi
 	cp -n .env.example .env || true
-	docker compose run --rm app php artisan key:generate
-	docker compose run --rm app php artisan storage:link
+	docker compose exec -u www-data app php artisan key:generate
+	docker compose exec -u www-data app php artisan storage:link
 
 migrate:
-	docker compose run --rm app php artisan migrate
+	docker compose exec -u www-data app php artisan migrate
 
 test:
-	docker compose run --rm app php artisan test -q
+	docker compose exec -u www-data app php artisan test -q
+
+populate:
+	docker compose exec -u www-data app php artisan db:seed
 
 artisan:
-	@docker compose run --rm app php artisan $(CMD)
-	@true
+	docker compose exec -u www-data app php artisan $(CMD)
 
+composer:
+	docker compose exec -u www-data app composer $(CMD)
+migrate_fresh:
+	docker compose run --rm app php artisan migrate:fresh 
+
+reverb:
+	docker compose exec app php artisan reverb:start --port=8081
+
+queue:
+	docker compose exec app php artisan queue:work
+
+ollama-pull:
+	docker compose exec ollama ollama pull llama3.2:3b
+
+ollama-tags:
+	docker compose exec app curl -sS http://ollama:11434/api/tags | head -n 60
+
+ollama-generate:
+	docker compose exec app curl -sS http://ollama:11434/api/generate \
+		-H "Content-Type: application/json" \
+		-d '{"model":"llama3.2:3b","prompt":"Escriu una frase curta sobre un estadi.","stream":false}'

@@ -11,6 +11,12 @@ services:
     depends_on:
       - db
       - redis
+      - ollama
+    ports:
+      - "8081:8081"
+    environment:
+      LLM_BASE_URL: http://ollama:11434
+      LLM_MODEL: llama3.2:3b 
 
   web:
     image: nginx:alpine
@@ -42,7 +48,32 @@ services:
     container_name: futbol-redis
     ports:
       - "6379:6379"
+        
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: futbol-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      # Si quieres permitir definir otros servidores manualmente en la UI:
+      # PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"   # opcional: per provar des del teu PC
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
 
 volumes:
   db-data:
+  ollama_data:
 
