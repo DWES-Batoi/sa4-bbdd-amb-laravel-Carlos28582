@@ -1,6 +1,5 @@
 @extends('layouts.equip')
 @section('title', __('Editar partit'))
-
 @section('content')
 <form action="{{ route('partits.update', $partit) }}" method="POST" class="space-y-4">
     @csrf
@@ -35,7 +34,7 @@
     <div>
         <label class="block text-sm font-medium">{{ __('Resultat') }}</label>
         <input type="text" name="resultat" value="{{ old('resultat', $partit->resultat) }}"
-               class="w-full border rounded p-2 text-black">
+            class="w-full border rounded p-2 text-black" placeholder="2 - 1">
         @error('resultat') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
     </div>
 

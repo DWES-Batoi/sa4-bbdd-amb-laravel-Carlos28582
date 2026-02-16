@@ -54,16 +54,13 @@ class PartitController extends Controller
     }
 
     // PUT/PATCH /partits/{partit}
-    public function update(Request $request, Partit $partit)
+   public function update(Request $request, Partit $partit)
 {
     $data = $request->validate([
-        'local_id' => ['required','exists:equips,id','different:visitant_id'],
-        'visitant_id' => ['required','exists:equips,id'],
+        'equip_local_id' => ['required','exists:equips,id','different:equip_visitant_id'],
+        'equip_visitant_id' => ['required','exists:equips,id'],
         'estadi_id' => ['required','exists:estadis,id'],
-        'data' => ['required','date'],
-        'jornada' => ['required','integer','min:1'],
-        'gols_local' => ['required','integer','min:0','max:99'],
-        'gols_visitant' => ['required','integer','min:0','max:99'],
+        'resultat' => ['required','string','max:10'],
     ]);
 
     // 1) posicions abans
@@ -79,7 +76,7 @@ class PartitController extends Controller
     $delta = [];
     foreach ($despres as $equipId => $posDespres) {
         $posAbans = $abans[$equipId] ?? $posDespres;
-        $deltaPos = $posAbans - $posDespres; // si passa de 5 a 3 => +2 (puja)
+        $deltaPos = $posAbans - $posDespres;
         if ($deltaPos !== 0) {
             $delta[] = ['equip_id' => $equipId, 'delta' => $deltaPos];
         }

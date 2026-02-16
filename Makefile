@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: up down reset sh logs install migrate test artisan
+.PHONY: up down reset sh logs install migrate test artisan ollama-pull ollama-tags ollama-generate
 
 up:
 	docker compose up -d --build
@@ -53,3 +53,14 @@ reverb:
 
 queue:
 	docker compose exec app php artisan queue:work
+
+ollama-pull:
+	docker compose exec ollama ollama pull llama3.2:3b
+
+ollama-tags:
+	docker compose exec app curl -sS http://ollama:11434/api/tags | head -n 60
+
+ollama-generate:
+	docker compose exec app curl -sS http://ollama:11434/api/generate \
+		-H "Content-Type: application/json" \
+		-d '{"model":"llama3.2:3b","prompt":"Escriu una frase curta sobre un estadi.","stream":false}'
